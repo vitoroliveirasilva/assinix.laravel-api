@@ -13,6 +13,8 @@ use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
@@ -82,6 +84,17 @@ return Application::configure(basePath: dirname(__DIR__))
             );
         });
 
+        $exceptions->render(function (AccessDeniedHttpException $exception, Request $request) use ($shouldReturnJson) {
+            if (!$shouldReturnJson($request)) {
+                return null;
+            }
+
+            return ApiResponse::error(
+                message: 'Você não tem permissão para executar esta ação.',
+                status: 403,
+            );
+        });
+
         $exceptions->render(function (TooManyRequestsHttpException $exception, Request $request) use ($shouldReturnJson) {
             if (!$shouldReturnJson($request)) {
                 return null;
@@ -113,6 +126,21 @@ return Application::configure(basePath: dirname(__DIR__))
                 message: 'Método HTTP não permitido para este recurso.',
                 status: 405,
             );
+        });
+
+        $exceptions->respond(function (Response $response, Throwable $exception, Request $request) use ($shouldReturnJson) {
+            if (!$shouldReturnJson($request)) {
+                return $response;
+            }
+
+            if ($response->getStatusCode() === 403) {
+                return ApiResponse::error(
+                    message: 'Você não tem permissão para executar esta ação.',
+                    status: 403,
+                );
+            }
+
+            return $response;
         });
     })
     ->create();

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\CategoryController;
 use App\Http\Controllers\Api\V1\MeController;
+use App\Http\Controllers\Api\V1\PaymentMethodController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -50,4 +52,11 @@ Route::middleware(['auth:sanctum', 'active', 'throttle:api.authenticated'])
 
         Route::patch('/me/password', [MeController::class, 'updatePassword'])
             ->name('me.password.update');
+
+        Route::apiResource('categories', CategoryController::class);
+
+        Route::apiResource('payment-methods', PaymentMethodController::class)
+            ->parameters([
+                'payment-methods' => 'payment_method',
+            ]);
     });
