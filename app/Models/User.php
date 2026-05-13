@@ -45,6 +45,16 @@ class User extends Authenticatable
         return $this->hasMany(PaymentMethod::class);
     }
 
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function subscriptionHistories(): HasMany
+    {
+        return $this->hasMany(SubscriptionHistory::class);
+    }
+
     public function isActive(): bool
     {
         return $this->is_active === true;

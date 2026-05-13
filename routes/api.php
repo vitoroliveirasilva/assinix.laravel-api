@@ -4,6 +4,8 @@ use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\CategoryController;
 use App\Http\Controllers\Api\V1\MeController;
 use App\Http\Controllers\Api\V1\PaymentMethodController;
+use App\Http\Controllers\Api\V1\SubscriptionController;
+use App\Http\Controllers\Api\V1\SubscriptionHistoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -59,4 +61,21 @@ Route::middleware(['auth:sanctum', 'active', 'throttle:api.authenticated'])
             ->parameters([
                 'payment-methods' => 'payment_method',
             ]);
+
+        Route::get('/subscriptions/{subscription}/history', [SubscriptionHistoryController::class, 'index'])
+            ->name('subscriptions.history');
+
+        Route::patch('/subscriptions/{subscription}/pause', [SubscriptionController::class, 'pause'])
+            ->name('subscriptions.pause');
+
+        Route::patch('/subscriptions/{subscription}/resume', [SubscriptionController::class, 'resume'])
+            ->name('subscriptions.resume');
+
+        Route::patch('/subscriptions/{subscription}/cancel', [SubscriptionController::class, 'cancel'])
+            ->name('subscriptions.cancel');
+
+        Route::patch('/subscriptions/{subscription}/renew', [SubscriptionController::class, 'renew'])
+            ->name('subscriptions.renew');
+
+        Route::apiResource('subscriptions', SubscriptionController::class);
     });
