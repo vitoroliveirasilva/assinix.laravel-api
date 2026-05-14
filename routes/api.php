@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\CategoryController;
+use App\Http\Controllers\Api\V1\DashboardController;
 use App\Http\Controllers\Api\V1\MeController;
 use App\Http\Controllers\Api\V1\PaymentMethodController;
 use App\Http\Controllers\Api\V1\SubscriptionController;
+use App\Http\Controllers\Api\V1\SubscriptionDueController;
 use App\Http\Controllers\Api\V1\SubscriptionHistoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +63,31 @@ Route::middleware(['auth:sanctum', 'active', 'throttle:api.authenticated'])
             ->parameters([
                 'payment-methods' => 'payment_method',
             ]);
+
+        Route::prefix('dashboard')
+            ->name('dashboard.')
+            ->group(function (): void {
+                Route::get('/summary', [DashboardController::class, 'summary'])
+                    ->name('summary');
+
+                Route::get('/monthly', [DashboardController::class, 'monthly'])
+                    ->name('monthly');
+
+                Route::get('/yearly', [DashboardController::class, 'yearly'])
+                    ->name('yearly');
+
+                Route::get('/by-category', [DashboardController::class, 'byCategory'])
+                    ->name('by-category');
+
+                Route::get('/by-payment-method', [DashboardController::class, 'byPaymentMethod'])
+                    ->name('by-payment-method');
+            });
+
+        Route::get('/subscriptions/upcoming', [SubscriptionDueController::class, 'upcoming'])
+            ->name('subscriptions.upcoming');
+
+        Route::get('/subscriptions/overdue', [SubscriptionDueController::class, 'overdue'])
+            ->name('subscriptions.overdue');
 
         Route::get('/subscriptions/{subscription}/history', [SubscriptionHistoryController::class, 'index'])
             ->name('subscriptions.history');
