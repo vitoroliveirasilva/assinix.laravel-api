@@ -35,4 +35,13 @@ return [
         ],
     ],
 
+    'awesomeapi' => [
+        'base_url' => env('AWESOMEAPI_BASE_URL', 'https://economia.awesomeapi.com.br'),
+        'api_key' => env('AWESOMEAPI_API_KEY'),
+        'timeout' => (int) env('AWESOMEAPI_TIMEOUT', 5),
+        'retry_times' => (int) env('AWESOMEAPI_RETRY_TIMES', 2),
+        'retry_sleep_ms' => (int) env('AWESOMEAPI_RETRY_SLEEP_MS', 200),
+        'cache_minutes' => (int) env('CURRENCY_RATE_CACHE_MINUTES', 60),
+    ],
+
 ];

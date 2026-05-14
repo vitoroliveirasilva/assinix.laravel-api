@@ -6,6 +6,7 @@ use App\Enums\CurrencyCode;
 use App\Enums\SubscriptionHistoryEvent;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Services\Currency\CurrencyConversionService;
 use App\Services\Subscription\SubscriptionHistoryRecorder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +14,7 @@ class UpdateSubscriptionAction
 {
     public function __construct(
         private readonly SubscriptionHistoryRecorder $historyRecorder,
+        private readonly CurrencyConversionService $currencyConversionService,
     ) {
     }
 
@@ -25,24 +27,24 @@ class UpdateSubscriptionAction
                 ->only($fields)
                 ->all();
 
-            if (array_key_exists('currency', $data)) {
-                $currency = CurrencyCode::from($data['currency']);
+            $currency = array_key_exists('currency', $data)
+                ? CurrencyCode::from($data['currency'])
+                : $subscription->currency;
 
-                $data['amount_brl'] = $currency->isBaseCurrency()
-                    ? ($data['amount'] ?? $subscription->amount)
-                    : null;
+            $amount = array_key_exists('amount', $data)
+                ? (float) $data['amount']
+                : (float) $subscription->amount;
 
-                $data['exchange_rate'] = $currency->isBaseCurrency()
-                    ? 1
-                    : null;
+            if (array_key_exists('currency', $data) || array_key_exists('amount', $data)) {
+                $conversion = $this->currencyConversionService->convert(
+                    amount: $amount,
+                    fromCurrency: $currency,
+                    toCurrency: CurrencyCode::BRL,
+                );
 
-                $data['exchange_rate_date'] = $currency->isBaseCurrency()
-                    ? now()->toDateString()
-                    : null;
-            } elseif (array_key_exists('amount', $data) && $subscription->currency->isBaseCurrency()) {
-                $data['amount_brl'] = $data['amount'];
-                $data['exchange_rate'] = 1;
-                $data['exchange_rate_date'] = now()->toDateString();
+                $data['amount_brl'] = $conversion['converted_amount'];
+                $data['exchange_rate'] = $conversion['rate'];
+                $data['exchange_rate_date'] = $conversion['quoted_at']?->toDateString() ?? now()->toDateString();
             }
 
             $subscription->fill($data);

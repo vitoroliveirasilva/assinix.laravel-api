@@ -7,6 +7,7 @@ use App\Enums\SubscriptionHistoryEvent;
 use App\Enums\SubscriptionStatus;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Services\Currency\CurrencyConversionService;
 use App\Services\Subscription\SubscriptionHistoryRecorder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,6 +15,7 @@ class CreateSubscriptionAction
 {
     public function __construct(
         private readonly SubscriptionHistoryRecorder $historyRecorder,
+        private readonly CurrencyConversionService $currencyConversionService,
     ) {
     }
 
@@ -22,6 +24,12 @@ class CreateSubscriptionAction
         return DB::transaction(function () use ($user, $data): Subscription {
             $currency = CurrencyCode::from($data['currency'] ?? CurrencyCode::BRL->value);
 
+            $conversion = $this->currencyConversionService->convert(
+                amount: (float) $data['amount'],
+                fromCurrency: $currency,
+                toCurrency: CurrencyCode::BRL,
+            );
+
             $subscription = $user->subscriptions()->create([
                 'category_id' => $data['category_id'] ?? null,
                 'payment_method_id' => $data['payment_method_id'] ?? null,
@@ -29,9 +37,9 @@ class CreateSubscriptionAction
                 'description' => $data['description'] ?? null,
                 'amount' => $data['amount'],
                 'currency' => $currency,
-                'amount_brl' => $currency->isBaseCurrency() ? $data['amount'] : null,
-                'exchange_rate' => $currency->isBaseCurrency() ? 1 : null,
-                'exchange_rate_date' => $currency->isBaseCurrency() ? now()->toDateString() : null,
+                'amount_brl' => $conversion['converted_amount'],
+                'exchange_rate' => $conversion['rate'],
+                'exchange_rate_date' => $conversion['quoted_at']?->toDateString() ?? now()->toDateString(),
                 'status' => $data['status'] ?? SubscriptionStatus::Active,
                 'recurrence' => $data['recurrence'],
                 'interval' => $data['interval'] ?? 1,

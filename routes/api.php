@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\V1\PaymentMethodController;
 use App\Http\Controllers\Api\V1\SubscriptionController;
 use App\Http\Controllers\Api\V1\SubscriptionDueController;
 use App\Http\Controllers\Api\V1\SubscriptionHistoryController;
+use App\Http\Controllers\Api\V1\CurrencyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -81,6 +82,19 @@ Route::middleware(['auth:sanctum', 'active', 'throttle:api.authenticated'])
 
                 Route::get('/by-payment-method', [DashboardController::class, 'byPaymentMethod'])
                     ->name('by-payment-method');
+            });
+
+        Route::prefix('currencies')
+            ->name('currencies.')
+            ->group(function (): void {
+                Route::get('/rates', [CurrencyController::class, 'rates'])
+                    ->name('rates');
+
+                Route::post('/refresh', [CurrencyController::class, 'refresh'])
+                    ->name('refresh');
+
+                Route::get('/convert', [CurrencyController::class, 'convert'])
+                    ->name('convert');
             });
 
         Route::get('/subscriptions/upcoming', [SubscriptionDueController::class, 'upcoming'])
