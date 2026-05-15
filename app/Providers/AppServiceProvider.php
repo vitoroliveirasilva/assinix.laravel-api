@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
+use Dedoc\Scramble\Scramble;
+use Dedoc\Scramble\Support\Generator\OpenApi;
+use Dedoc\Scramble\Support\Generator\SecurityScheme;
+use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+
+        $this->configureOpenApiDocumentation();
+
         RateLimiter::for('auth.login', function (Request $request): array {
             $email = Str::lower((string) $request->input('email'));
 
@@ -39,4 +46,23 @@ class AppServiceProvider extends ServiceProvider
                 ->by('api-user:' . ($request->user()?->id ?: $request->ip()));
         });
     }
+
+    private function configureOpenApiDocumentation(): void
+    {
+        Gate::define('viewApiDocs', function (): bool {
+            return app()->environment(['local', 'testing']);
+        });
+
+        if (!class_exists(Scramble::class)) {
+            return;
+        }
+
+        Scramble::configure()
+            ->withDocumentTransformers(function (OpenApi $openApi): void {
+                $openApi->secure(
+                    SecurityScheme::http('bearer')
+                );
+            });
+    }
+
 }
