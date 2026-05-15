@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\V1\SubscriptionController;
 use App\Http\Controllers\Api\V1\SubscriptionDueController;
 use App\Http\Controllers\Api\V1\SubscriptionHistoryController;
 use App\Http\Controllers\Api\V1\CurrencyController;
+use App\Http\Controllers\Api\V1\AuditLogController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -96,6 +97,9 @@ Route::middleware(['auth:sanctum', 'active', 'throttle:api.authenticated'])
                 Route::get('/convert', [CurrencyController::class, 'convert'])
                     ->name('convert');
             });
+
+        Route::get('/audit-logs', [AuditLogController::class, 'index'])
+            ->name('audit-logs.index');
 
         Route::get('/subscriptions/upcoming', [SubscriptionDueController::class, 'upcoming'])
             ->name('subscriptions.upcoming');

@@ -55,6 +55,7 @@ it('returns dashboard summary for authenticated user', function (): void {
         'currency' => CurrencyCode::USD,
         'amount' => 10.00,
         'amount_brl' => null,
+        'next_billing_at' => now()->addDays(60)->toDateString(),
     ]);
 
     Subscription::factory()->create([

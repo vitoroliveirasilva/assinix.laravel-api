@@ -55,6 +55,11 @@ class User extends Authenticatable
         return $this->hasMany(SubscriptionHistory::class);
     }
 
+    public function auditLogs(): HasMany
+    {
+        return $this->hasMany(AuditLog::class);
+    }
+
     public function isActive(): bool
     {
         return $this->is_active === true;
