@@ -1,15 +1,15 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AuditLogController;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\CategoryController;
+use App\Http\Controllers\Api\V1\CurrencyController;
 use App\Http\Controllers\Api\V1\DashboardController;
 use App\Http\Controllers\Api\V1\MeController;
 use App\Http\Controllers\Api\V1\PaymentMethodController;
 use App\Http\Controllers\Api\V1\SubscriptionController;
 use App\Http\Controllers\Api\V1\SubscriptionDueController;
 use App\Http\Controllers\Api\V1\SubscriptionHistoryController;
-use App\Http\Controllers\Api\V1\CurrencyController;
-use App\Http\Controllers\Api\V1\AuditLogController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

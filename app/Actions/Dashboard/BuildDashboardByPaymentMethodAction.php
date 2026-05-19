@@ -11,8 +11,7 @@ class BuildDashboardByPaymentMethodAction
 {
     public function __construct(
         private readonly SubscriptionFinancialCalculator $calculator,
-    ) {
-    }
+    ) {}
 
     public function execute(User $user): array
     {
@@ -21,14 +20,14 @@ class BuildDashboardByPaymentMethodAction
             ->forUser($user)
             ->where('status', SubscriptionStatus::Active)
             ->get()
-            ->groupBy(fn(Subscription $subscription): string => $subscription->paymentMethod?->name ?? 'Sem forma de pagamento')
+            ->groupBy(fn (Subscription $subscription): string => $subscription->paymentMethod?->name ?? 'Sem forma de pagamento')
             ->map(function ($subscriptions, string $paymentMethodName): array {
                 $monthlyTotal = $subscriptions->sum(
-                    fn(Subscription $subscription): float => $this->calculator->monthlyEstimated($subscription)
+                    fn (Subscription $subscription): float => $this->calculator->monthlyEstimated($subscription)
                 );
 
                 $yearlyTotal = $subscriptions->sum(
-                    fn(Subscription $subscription): float => $this->calculator->yearlyEstimated($subscription)
+                    fn (Subscription $subscription): float => $this->calculator->yearlyEstimated($subscription)
                 );
 
                 return [

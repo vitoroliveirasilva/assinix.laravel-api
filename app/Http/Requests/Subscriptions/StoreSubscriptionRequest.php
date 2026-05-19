@@ -51,7 +51,7 @@ class StoreSubscriptionRequest extends FormRequest
             'recurrence' => ['required', Rule::enum(RecurrenceType::class)],
             'interval' => ['sometimes', 'required', 'integer', 'min:1', 'max:120'],
             'interval_in_days' => [
-                Rule::requiredIf(fn(): bool => $this->input('recurrence') === RecurrenceType::Custom->value),
+                Rule::requiredIf(fn (): bool => $this->input('recurrence') === RecurrenceType::Custom->value),
                 'nullable',
                 'integer',
                 'min:1',

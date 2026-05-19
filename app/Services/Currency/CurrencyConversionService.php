@@ -12,8 +12,7 @@ class CurrencyConversionService
 {
     public function __construct(
         private readonly AwesomeApiCurrencyClient $client,
-    ) {
-    }
+    ) {}
 
     public function convert(
         float $amount,
@@ -65,7 +64,7 @@ class CurrencyConversionService
             ]);
         }
 
-        if (!$forceRefresh) {
+        if (! $forceRefresh) {
             $freshRate = $this->freshCachedRate($baseCurrency, $targetCurrency);
 
             if ($freshRate !== null) {

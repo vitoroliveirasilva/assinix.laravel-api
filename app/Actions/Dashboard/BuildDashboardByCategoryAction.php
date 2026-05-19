@@ -11,8 +11,7 @@ class BuildDashboardByCategoryAction
 {
     public function __construct(
         private readonly SubscriptionFinancialCalculator $calculator,
-    ) {
-    }
+    ) {}
 
     public function execute(User $user): array
     {
@@ -21,14 +20,14 @@ class BuildDashboardByCategoryAction
             ->forUser($user)
             ->where('status', SubscriptionStatus::Active)
             ->get()
-            ->groupBy(fn(Subscription $subscription): string => $subscription->category?->name ?? 'Sem categoria')
+            ->groupBy(fn (Subscription $subscription): string => $subscription->category?->name ?? 'Sem categoria')
             ->map(function ($subscriptions, string $categoryName): array {
                 $monthlyTotal = $subscriptions->sum(
-                    fn(Subscription $subscription): float => $this->calculator->monthlyEstimated($subscription)
+                    fn (Subscription $subscription): float => $this->calculator->monthlyEstimated($subscription)
                 );
 
                 $yearlyTotal = $subscriptions->sum(
-                    fn(Subscription $subscription): float => $this->calculator->yearlyEstimated($subscription)
+                    fn (Subscription $subscription): float => $this->calculator->yearlyEstimated($subscription)
                 );
 
                 return [

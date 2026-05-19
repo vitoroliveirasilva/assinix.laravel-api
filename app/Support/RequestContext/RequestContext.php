@@ -53,7 +53,7 @@ class RequestContext
         static $consoleRequestId = null;
 
         if ($consoleRequestId === null) {
-            $consoleRequestId = 'console-' . (string) Str::uuid();
+            $consoleRequestId = 'console-'.(string) Str::uuid();
         }
 
         return $consoleRequestId;

@@ -26,7 +26,7 @@ class CategoryController extends Controller
         $categories = Category::query()
             ->forUser($request->user())
             ->when($search !== '', function ($query) use ($search): void {
-                $query->whereRaw('LOWER(name) LIKE ?', ['%' . mb_strtolower($search) . '%']);
+                $query->whereRaw('LOWER(name) LIKE ?', ['%'.mb_strtolower($search).'%']);
             })
             ->orderBy('name')
             ->paginate($perPage)

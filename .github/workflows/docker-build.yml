@@ -1,0 +1,40 @@
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - prod
+      - main
+      - dev
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - prod
+      - main
+      - dev
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: assinix-docker-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  docker-build:
+    name: Docker build smoke test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Validate docker compose file
+        run: docker compose config
+
+      - name: Build PHP application image
+        run: docker compose build app

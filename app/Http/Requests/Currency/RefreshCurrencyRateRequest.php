@@ -29,7 +29,7 @@ class RefreshCurrencyRateRequest extends FormRequest
             'currency' => [
                 'required',
                 Rule::enum(CurrencyCode::class),
-                'not_in:' . CurrencyCode::BRL->value,
+                'not_in:'.CurrencyCode::BRL->value,
             ],
             'update_subscriptions' => ['sometimes', 'boolean'],
         ];

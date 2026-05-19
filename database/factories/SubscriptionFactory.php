@@ -42,7 +42,7 @@ class SubscriptionFactory extends Factory
 
     public function forUserWithRelations(User $user): static
     {
-        return $this->state(fn(array $attributes): array => [
+        return $this->state(fn (array $attributes): array => [
             'user_id' => $user->id,
             'category_id' => Category::factory()->for($user)->create()->id,
             'payment_method_id' => PaymentMethod::factory()->pix()->for($user)->create()->id,
@@ -51,14 +51,14 @@ class SubscriptionFactory extends Factory
 
     public function paused(): static
     {
-        return $this->state(fn(array $attributes): array => [
+        return $this->state(fn (array $attributes): array => [
             'status' => SubscriptionStatus::Paused,
         ]);
     }
 
     public function canceled(): static
     {
-        return $this->state(fn(array $attributes): array => [
+        return $this->state(fn (array $attributes): array => [
             'status' => SubscriptionStatus::Canceled,
             'ends_at' => now()->toDateString(),
         ]);
@@ -66,7 +66,7 @@ class SubscriptionFactory extends Factory
 
     public function expired(): static
     {
-        return $this->state(fn(array $attributes): array => [
+        return $this->state(fn (array $attributes): array => [
             'status' => SubscriptionStatus::Expired,
             'ends_at' => now()->subDay()->toDateString(),
         ]);
@@ -74,7 +74,7 @@ class SubscriptionFactory extends Factory
 
     public function weekly(): static
     {
-        return $this->state(fn(array $attributes): array => [
+        return $this->state(fn (array $attributes): array => [
             'recurrence' => RecurrenceType::Weekly,
             'interval' => 1,
             'interval_in_days' => null,
@@ -83,7 +83,7 @@ class SubscriptionFactory extends Factory
 
     public function yearly(): static
     {
-        return $this->state(fn(array $attributes): array => [
+        return $this->state(fn (array $attributes): array => [
             'recurrence' => RecurrenceType::Yearly,
             'interval' => 1,
             'interval_in_days' => null,
@@ -92,7 +92,7 @@ class SubscriptionFactory extends Factory
 
     public function customEvery(int $days): static
     {
-        return $this->state(fn(array $attributes): array => [
+        return $this->state(fn (array $attributes): array => [
             'recurrence' => RecurrenceType::Custom,
             'interval' => 1,
             'interval_in_days' => $days,

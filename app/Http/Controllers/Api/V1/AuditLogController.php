@@ -19,15 +19,15 @@ class AuditLogController extends Controller
             ->where('user_id', $request->user()->id)
             ->when(
                 isset($validated['action']),
-                fn($query) => $query->where('action', $validated['action']),
+                fn ($query) => $query->where('action', $validated['action']),
             )
             ->when(
                 isset($validated['from']),
-                fn($query) => $query->whereDate('created_at', '>=', $validated['from']),
+                fn ($query) => $query->whereDate('created_at', '>=', $validated['from']),
             )
             ->when(
                 isset($validated['to']),
-                fn($query) => $query->whereDate('created_at', '<=', $validated['to']),
+                fn ($query) => $query->whereDate('created_at', '<=', $validated['to']),
             )
             ->latest('created_at')
             ->paginate($request->perPage())

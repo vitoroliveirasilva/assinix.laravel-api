@@ -24,7 +24,7 @@ class UpdateCategoryRequest extends FormRequest
                 'min:2',
                 'max:100',
                 Rule::unique('categories', 'name')
-                    ->where(fn($query) => $query
+                    ->where(fn ($query) => $query
                         ->where('user_id', $this->user()->id)
                         ->whereNull('deleted_at'))
                     ->ignore($category?->id),

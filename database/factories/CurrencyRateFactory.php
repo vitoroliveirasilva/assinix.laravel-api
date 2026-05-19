@@ -25,7 +25,7 @@ class CurrencyRateFactory extends Factory
 
     public function usdToBrl(float $rate = 5.0): static
     {
-        return $this->state(fn(): array => [
+        return $this->state(fn (): array => [
             'base_currency' => CurrencyCode::USD,
             'target_currency' => CurrencyCode::BRL,
             'rate' => $rate,
@@ -41,7 +41,7 @@ class CurrencyRateFactory extends Factory
 
     public function eurToBrl(float $rate = 6.0): static
     {
-        return $this->state(fn(): array => [
+        return $this->state(fn (): array => [
             'base_currency' => CurrencyCode::EUR,
             'target_currency' => CurrencyCode::BRL,
             'rate' => $rate,

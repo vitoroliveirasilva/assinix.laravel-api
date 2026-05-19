@@ -14,12 +14,11 @@ class ResumeSubscriptionAction
 {
     public function __construct(
         private readonly SubscriptionHistoryRecorder $historyRecorder,
-    ) {
-    }
+    ) {}
 
     public function execute(Subscription $subscription, User $user): Subscription
     {
-        if (!$subscription->isPaused()) {
+        if (! $subscription->isPaused()) {
             throw ValidationException::withMessages([
                 'status' => ['Apenas assinaturas pausadas podem ser retomadas.'],
             ]);

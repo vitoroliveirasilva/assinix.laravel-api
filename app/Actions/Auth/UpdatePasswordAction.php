@@ -10,7 +10,7 @@ class UpdatePasswordAction
 {
     public function execute(User $user, array $data): User
     {
-        if (!Hash::check($data['current_password'], $user->password)) {
+        if (! Hash::check($data['current_password'], $user->password)) {
             throw ValidationException::withMessages([
                 'current_password' => ['A senha atual está incorreta.'],
             ]);

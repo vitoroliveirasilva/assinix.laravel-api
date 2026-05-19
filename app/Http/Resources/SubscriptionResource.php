@@ -14,14 +14,14 @@ class SubscriptionResource extends JsonResource
 
             'category' => $this->whenLoaded(
                 'category',
-                fn() => $this->category
+                fn () => $this->category
                 ? CategoryResource::make($this->category)->resolve($request)
                 : null,
             ),
 
             'payment_method' => $this->whenLoaded(
                 'paymentMethod',
-                fn() => $this->paymentMethod
+                fn () => $this->paymentMethod
                 ? PaymentMethodResource::make($this->paymentMethod)->resolve($request)
                 : null,
             ),

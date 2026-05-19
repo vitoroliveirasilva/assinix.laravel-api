@@ -44,12 +44,12 @@ class SubscriptionController extends Controller
             ->with(['category', 'paymentMethod'])
             ->forUser($request->user())
             ->when($search !== '', function ($query) use ($search): void {
-                $query->whereRaw('LOWER(name) LIKE ?', ['%' . mb_strtolower($search) . '%']);
+                $query->whereRaw('LOWER(name) LIKE ?', ['%'.mb_strtolower($search).'%']);
             })
-            ->when(isset($validated['status']), fn($query) => $query->where('status', $validated['status']))
-            ->when(isset($validated['recurrence']), fn($query) => $query->where('recurrence', $validated['recurrence']))
-            ->when(isset($validated['category_id']), fn($query) => $query->where('category_id', $validated['category_id']))
-            ->when(isset($validated['payment_method_id']), fn($query) => $query->where('payment_method_id', $validated['payment_method_id']))
+            ->when(isset($validated['status']), fn ($query) => $query->where('status', $validated['status']))
+            ->when(isset($validated['recurrence']), fn ($query) => $query->where('recurrence', $validated['recurrence']))
+            ->when(isset($validated['category_id']), fn ($query) => $query->where('category_id', $validated['category_id']))
+            ->when(isset($validated['payment_method_id']), fn ($query) => $query->where('payment_method_id', $validated['payment_method_id']))
             ->orderBy('next_billing_at')
             ->orderBy('name')
             ->paginate($perPage)

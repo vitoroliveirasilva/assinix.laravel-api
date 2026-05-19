@@ -22,7 +22,7 @@ enum RecurrenceType: string
     public static function values(): array
     {
         return array_map(
-            callback: static fn(self $recurrence): string => $recurrence->value,
+            callback: static fn (self $recurrence): string => $recurrence->value,
             array: self::cases(),
         );
     }

@@ -11,8 +11,7 @@ class BuildDashboardSummaryAction
 {
     public function __construct(
         private readonly SubscriptionFinancialCalculator $calculator,
-    ) {
-    }
+    ) {}
 
     public function execute(User $user): array
     {
@@ -25,10 +24,10 @@ class BuildDashboardSummaryAction
             ->where('status', SubscriptionStatus::Active);
 
         $monthlyTotal = $activeSubscriptions
-            ->sum(fn(Subscription $subscription): float => $this->calculator->monthlyEstimated($subscription));
+            ->sum(fn (Subscription $subscription): float => $this->calculator->monthlyEstimated($subscription));
 
         $yearlyTotal = $activeSubscriptions
-            ->sum(fn(Subscription $subscription): float => $this->calculator->yearlyEstimated($subscription));
+            ->sum(fn (Subscription $subscription): float => $this->calculator->yearlyEstimated($subscription));
 
         $today = now()->toDateString();
         $nextThirtyDays = now()->addDays(30)->toDateString();
@@ -51,15 +50,15 @@ class BuildDashboardSummaryAction
             ],
             'due' => [
                 'upcoming_30_days' => $activeSubscriptions
-                    ->filter(fn(Subscription $subscription): bool => $subscription->next_billing_at->between($today, $nextThirtyDays))
+                    ->filter(fn (Subscription $subscription): bool => $subscription->next_billing_at->between($today, $nextThirtyDays))
                     ->count(),
                 'overdue' => $activeSubscriptions
-                    ->filter(fn(Subscription $subscription): bool => $subscription->next_billing_at->lt($today))
+                    ->filter(fn (Subscription $subscription): bool => $subscription->next_billing_at->lt($today))
                     ->count(),
             ],
             'currency' => [
                 'pending_conversion_count' => $subscriptions
-                    ->filter(fn(Subscription $subscription): bool => $this->calculator->hasPendingCurrencyConversion($subscription))
+                    ->filter(fn (Subscription $subscription): bool => $this->calculator->hasPendingCurrencyConversion($subscription))
                     ->count(),
             ],
         ];

@@ -7,7 +7,7 @@ use App\Services\Subscription\SubscriptionFinancialCalculator;
 
 function fakeSubscriptionForCalculation(array $attributes): Subscription
 {
-    $subscription = new Subscription();
+    $subscription = new Subscription;
 
     $subscription->forceFill(array_merge([
         'amount' => 120.00,
@@ -22,7 +22,7 @@ function fakeSubscriptionForCalculation(array $attributes): Subscription
 }
 
 it('calculates monthly estimated amount for weekly recurrence', function (): void {
-    $calculator = new SubscriptionFinancialCalculator();
+    $calculator = new SubscriptionFinancialCalculator;
 
     $subscription = fakeSubscriptionForCalculation([
         'amount_brl' => 30.00,
@@ -34,7 +34,7 @@ it('calculates monthly estimated amount for weekly recurrence', function (): voi
 });
 
 it('calculates yearly estimated amount for weekly recurrence', function (): void {
-    $calculator = new SubscriptionFinancialCalculator();
+    $calculator = new SubscriptionFinancialCalculator;
 
     $subscription = fakeSubscriptionForCalculation([
         'amount_brl' => 30.00,
@@ -46,7 +46,7 @@ it('calculates yearly estimated amount for weekly recurrence', function (): void
 });
 
 it('calculates monthly estimated amount for monthly recurrence', function (): void {
-    $calculator = new SubscriptionFinancialCalculator();
+    $calculator = new SubscriptionFinancialCalculator;
 
     $subscription = fakeSubscriptionForCalculation([
         'amount_brl' => 120.00,
@@ -58,7 +58,7 @@ it('calculates monthly estimated amount for monthly recurrence', function (): vo
 });
 
 it('calculates yearly estimated amount for monthly recurrence', function (): void {
-    $calculator = new SubscriptionFinancialCalculator();
+    $calculator = new SubscriptionFinancialCalculator;
 
     $subscription = fakeSubscriptionForCalculation([
         'amount_brl' => 120.00,
@@ -70,7 +70,7 @@ it('calculates yearly estimated amount for monthly recurrence', function (): voi
 });
 
 it('calculates monthly estimated amount for yearly recurrence', function (): void {
-    $calculator = new SubscriptionFinancialCalculator();
+    $calculator = new SubscriptionFinancialCalculator;
 
     $subscription = fakeSubscriptionForCalculation([
         'amount_brl' => 1200.00,
@@ -82,7 +82,7 @@ it('calculates monthly estimated amount for yearly recurrence', function (): voi
 });
 
 it('calculates yearly estimated amount for yearly recurrence', function (): void {
-    $calculator = new SubscriptionFinancialCalculator();
+    $calculator = new SubscriptionFinancialCalculator;
 
     $subscription = fakeSubscriptionForCalculation([
         'amount_brl' => 1200.00,
@@ -94,7 +94,7 @@ it('calculates yearly estimated amount for yearly recurrence', function (): void
 });
 
 it('calculates monthly estimated amount for custom recurrence', function (): void {
-    $calculator = new SubscriptionFinancialCalculator();
+    $calculator = new SubscriptionFinancialCalculator;
 
     $subscription = fakeSubscriptionForCalculation([
         'amount_brl' => 50.00,
@@ -106,7 +106,7 @@ it('calculates monthly estimated amount for custom recurrence', function (): voi
 });
 
 it('calculates yearly estimated amount for custom recurrence', function (): void {
-    $calculator = new SubscriptionFinancialCalculator();
+    $calculator = new SubscriptionFinancialCalculator;
 
     $subscription = fakeSubscriptionForCalculation([
         'amount_brl' => 50.00,
@@ -118,7 +118,7 @@ it('calculates yearly estimated amount for custom recurrence', function (): void
 });
 
 it('returns zero for foreign currency without converted amount', function (): void {
-    $calculator = new SubscriptionFinancialCalculator();
+    $calculator = new SubscriptionFinancialCalculator;
 
     $subscription = fakeSubscriptionForCalculation([
         'amount' => 10.00,

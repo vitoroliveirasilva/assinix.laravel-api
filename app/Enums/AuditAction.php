@@ -94,7 +94,7 @@ enum AuditAction: string
     public static function values(): array
     {
         return array_map(
-            callback: static fn(self $action): string => $action->value,
+            callback: static fn (self $action): string => $action->value,
             array: self::cases(),
         );
     }

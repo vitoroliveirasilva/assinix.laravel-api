@@ -14,8 +14,7 @@ class CancelSubscriptionAction
 {
     public function __construct(
         private readonly SubscriptionHistoryRecorder $historyRecorder,
-    ) {
-    }
+    ) {}
 
     public function execute(Subscription $subscription, User $user): Subscription
     {

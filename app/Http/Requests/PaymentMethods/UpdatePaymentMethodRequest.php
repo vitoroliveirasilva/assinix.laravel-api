@@ -25,7 +25,7 @@ class UpdatePaymentMethodRequest extends FormRequest
                 'min:2',
                 'max:100',
                 Rule::unique('payment_methods', 'name')
-                    ->where(fn($query) => $query
+                    ->where(fn ($query) => $query
                         ->where('user_id', $this->user()->id)
                         ->whereNull('deleted_at'))
                     ->ignore($paymentMethod?->id),

@@ -12,8 +12,7 @@ class BuildDashboardMonthlyAction
 {
     public function __construct(
         private readonly SubscriptionFinancialCalculator $calculator,
-    ) {
-    }
+    ) {}
 
     public function execute(User $user, int $months = 12): array
     {
@@ -29,15 +28,15 @@ class BuildDashboardMonthlyAction
                 $month = $start->addMonthsNoOverflow($offset);
 
                 $monthlyTotal = $subscriptions->sum(
-                    fn(Subscription $subscription): float => $this->calculator->monthlyEstimated($subscription)
+                    fn (Subscription $subscription): float => $this->calculator->monthlyEstimated($subscription)
                 );
 
                 $dueInMonth = $subscriptions
-                    ->filter(fn(Subscription $subscription): bool => $subscription->next_billing_at->isSameMonth($month))
+                    ->filter(fn (Subscription $subscription): bool => $subscription->next_billing_at->isSameMonth($month))
                     ->values();
 
                 $dueTotal = $dueInMonth->sum(
-                    fn(Subscription $subscription): float => $this->calculator->amountInBrl($subscription)
+                    fn (Subscription $subscription): float => $this->calculator->amountInBrl($subscription)
                 );
 
                 return [

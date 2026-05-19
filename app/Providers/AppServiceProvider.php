@@ -2,15 +2,15 @@
 
 namespace App\Providers;
 
-use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 use Dedoc\Scramble\Scramble;
 use Dedoc\Scramble\Support\Generator\OpenApi;
 use Dedoc\Scramble\Support\Generator\SecurityScheme;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,21 +29,21 @@ class AppServiceProvider extends ServiceProvider
 
             return [
                 Limit::perMinute((int) env('AUTH_LOGIN_MAX_ATTEMPTS', 5))
-                    ->by('login-email:' . $email . '|ip:' . $request->ip()),
+                    ->by('login-email:'.$email.'|ip:'.$request->ip()),
 
                 Limit::perMinute((int) env('AUTH_LOGIN_IP_MAX_ATTEMPTS', 20))
-                    ->by('login-ip:' . $request->ip()),
+                    ->by('login-ip:'.$request->ip()),
             ];
         });
 
         RateLimiter::for('auth.register', function (Request $request): Limit {
             return Limit::perMinute((int) env('AUTH_REGISTER_MAX_ATTEMPTS', 5))
-                ->by('register-ip:' . $request->ip());
+                ->by('register-ip:'.$request->ip());
         });
 
         RateLimiter::for('api.authenticated', function (Request $request): Limit {
             return Limit::perMinute((int) env('AUTH_API_MAX_ATTEMPTS', 120))
-                ->by('api-user:' . ($request->user()?->id ?: $request->ip()));
+                ->by('api-user:'.($request->user()?->id ?: $request->ip()));
         });
     }
 
@@ -53,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
             return app()->environment(['local', 'testing']);
         });
 
-        if (!class_exists(Scramble::class)) {
+        if (! class_exists(Scramble::class)) {
             return;
         }
 
@@ -64,5 +64,4 @@ class AppServiceProvider extends ServiceProvider
                 );
             });
     }
-
 }

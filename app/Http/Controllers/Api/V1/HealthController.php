@@ -20,7 +20,7 @@ class HealthController extends Controller
         ];
 
         $isHealthy = collect($checks)
-            ->every(fn(array $check): bool => $check['status'] === 'ok');
+            ->every(fn (array $check): bool => $check['status'] === 'ok');
 
         return ApiResponse::success(
             data: [
@@ -65,7 +65,7 @@ class HealthController extends Controller
     private function checkCache(): array
     {
         try {
-            $key = 'health_check:' . now()->timestamp;
+            $key = 'health_check:'.now()->timestamp;
 
             Cache::put($key, 'ok', 10);
 

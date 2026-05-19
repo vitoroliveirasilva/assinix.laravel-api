@@ -28,7 +28,7 @@ class PaymentMethodFactory extends Factory
 
     public function creditCard(): static
     {
-        return $this->state(fn(array $attributes): array => [
+        return $this->state(fn (array $attributes): array => [
             'type' => PaymentMethodType::CreditCard,
             'brand' => 'Visa',
             'last_four' => '1234',
@@ -37,7 +37,7 @@ class PaymentMethodFactory extends Factory
 
     public function pix(): static
     {
-        return $this->state(fn(array $attributes): array => [
+        return $this->state(fn (array $attributes): array => [
             'type' => PaymentMethodType::Pix,
             'brand' => null,
             'last_four' => null,
@@ -46,7 +46,7 @@ class PaymentMethodFactory extends Factory
 
     public function inactive(): static
     {
-        return $this->state(fn(array $attributes): array => [
+        return $this->state(fn (array $attributes): array => [
             'is_active' => false,
         ]);
     }

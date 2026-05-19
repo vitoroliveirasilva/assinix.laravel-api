@@ -16,8 +16,7 @@ class AuditLogger
 {
     public function __construct(
         private readonly SensitiveDataSanitizer $sanitizer,
-    ) {
-    }
+    ) {}
 
     public function record(
         AuditAction $action,

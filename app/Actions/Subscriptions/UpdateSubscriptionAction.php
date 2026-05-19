@@ -15,8 +15,7 @@ class UpdateSubscriptionAction
     public function __construct(
         private readonly SubscriptionHistoryRecorder $historyRecorder,
         private readonly CurrencyConversionService $currencyConversionService,
-    ) {
-    }
+    ) {}
 
     public function execute(Subscription $subscription, User $user, array $data): Subscription
     {

@@ -2,7 +2,6 @@
 
 use App\Enums\AuditAction;
 use App\Models\AuditLog;
-use App\Models\Category;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
@@ -134,7 +133,7 @@ it('filters audit logs by action', function (): void {
 
     Sanctum::actingAs($user);
 
-    $response = $this->getJson('/api/v1/audit-logs?action=' . AuditAction::SubscriptionCreated->value);
+    $response = $this->getJson('/api/v1/audit-logs?action='.AuditAction::SubscriptionCreated->value);
 
     $response
         ->assertOk()

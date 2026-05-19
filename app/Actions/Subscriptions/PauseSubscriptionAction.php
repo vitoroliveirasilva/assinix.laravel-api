@@ -14,12 +14,11 @@ class PauseSubscriptionAction
 {
     public function __construct(
         private readonly SubscriptionHistoryRecorder $historyRecorder,
-    ) {
-    }
+    ) {}
 
     public function execute(Subscription $subscription, User $user): Subscription
     {
-        if (!$subscription->isActive()) {
+        if (! $subscription->isActive()) {
             throw ValidationException::withMessages([
                 'status' => ['Apenas assinaturas ativas podem ser pausadas.'],
             ]);

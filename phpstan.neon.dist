@@ -1,0 +1,23 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+    - phpstan-baseline.neon
+
+parameters:
+    paths:
+        - app
+        - routes
+        - database/factories
+        - database/seeders
+
+    level: 4
+
+    tmpDir: storage/framework/cache/phpstan
+
+    excludePaths:
+        - bootstrap/cache
+        - storage
+        - vendor
+
+    treatPhpDocTypesAsCertain: false
+    reportUnmatchedIgnoredErrors: false

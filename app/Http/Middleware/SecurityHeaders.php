@@ -24,7 +24,7 @@ class SecurityHeaders
             $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
         }
 
-        if (!$response->headers->has('Cache-Control')) {
+        if (! $response->headers->has('Cache-Control')) {
             $response->headers->set('Cache-Control', 'no-store, private');
         }
 

@@ -1,0 +1,523 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method App\\Actions\\Categories\\CreateCategoryAction\:\:execute\(\) should return App\\Models\\Category but returns Illuminate\\Database\\Eloquent\\Model\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Actions/Categories/CreateCategoryAction.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Actions/Dashboard/BuildDashboardByCategoryAction.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Actions/Dashboard/BuildDashboardByPaymentMethodAction.php
+
+		-
+			message: '#^Cannot call method isSameMonth\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Actions/Dashboard/BuildDashboardMonthlyAction.php
+
+		-
+			message: '#^Cannot call method between\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Actions/Dashboard/BuildDashboardSummaryAction.php
+
+		-
+			message: '#^Cannot call method lt\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Actions/Dashboard/BuildDashboardSummaryAction.php
+
+		-
+			message: '#^Cannot call method format\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Actions/Dashboard/BuildDashboardYearlyAction.php
+
+		-
+			message: '#^Method App\\Actions\\PaymentMethods\\CreatePaymentMethodAction\:\:execute\(\) should return App\\Models\\PaymentMethod but returns Illuminate\\Database\\Eloquent\\Model\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Actions/PaymentMethods/CreatePaymentMethodAction.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Actions/Subscriptions/CancelSubscriptionAction.php
+
+		-
+			message: '#^Cannot call method toDateString\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Actions/Subscriptions/CancelSubscriptionAction.php
+
+		-
+			message: '#^Anonymous function should return App\\Models\\Subscription but returns Illuminate\\Database\\Eloquent\\Model\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Actions/Subscriptions/CreateSubscriptionAction.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Actions/Subscriptions/PauseSubscriptionAction.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Actions/Subscriptions/RenewSubscriptionAction.php
+
+		-
+			message: '#^Cannot call method toDateString\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 5
+			path: app/Actions/Subscriptions/RenewSubscriptionAction.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Actions/Subscriptions/ResumeSubscriptionAction.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Contracts\\Pagination\\LengthAwarePaginator\:\:getCollection\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Http/Controllers/Api/V1/CurrencyController.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\AuditLogResource\:\:\$action\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/AuditLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\AuditLogResource\:\:\$auditable_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/AuditLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\AuditLogResource\:\:\$auditable_type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/AuditLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\AuditLogResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/AuditLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\AuditLogResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/AuditLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\AuditLogResource\:\:\$ip_address\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/AuditLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\AuditLogResource\:\:\$metadata\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/AuditLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\AuditLogResource\:\:\$request_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/AuditLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\AuditLogResource\:\:\$user_agent\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/AuditLogResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CategoryResource\:\:\$color\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/CategoryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CategoryResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/CategoryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CategoryResource\:\:\$description\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/CategoryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CategoryResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/CategoryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CategoryResource\:\:\$is_active\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/CategoryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CategoryResource\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/CategoryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CategoryResource\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/CategoryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CurrencyRateResource\:\:\$base_currency\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/CurrencyRateResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CurrencyRateResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/CurrencyRateResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CurrencyRateResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/CurrencyRateResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CurrencyRateResource\:\:\$quoted_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/CurrencyRateResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CurrencyRateResource\:\:\$rate\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/CurrencyRateResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CurrencyRateResource\:\:\$source\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/CurrencyRateResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CurrencyRateResource\:\:\$target_currency\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/CurrencyRateResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\CurrencyRateResource\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/CurrencyRateResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\PaymentMethodResource\:\:\$brand\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/PaymentMethodResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\PaymentMethodResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/PaymentMethodResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\PaymentMethodResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/PaymentMethodResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\PaymentMethodResource\:\:\$is_active\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/PaymentMethodResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\PaymentMethodResource\:\:\$last_four\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/PaymentMethodResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\PaymentMethodResource\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/PaymentMethodResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\PaymentMethodResource\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/PaymentMethodResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\PaymentMethodResource\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/PaymentMethodResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionHistoryResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionHistoryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionHistoryResource\:\:\$description\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionHistoryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionHistoryResource\:\:\$event\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/SubscriptionHistoryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionHistoryResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionHistoryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionHistoryResource\:\:\$new_values\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionHistoryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionHistoryResource\:\:\$old_values\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionHistoryResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$amount\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$amount_brl\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$category\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$currency\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$description\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$ends_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$exchange_rate\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$exchange_rate_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$interval\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$interval_in_days\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$last_charged_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$metadata\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$next_billing_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$paymentMethod\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$recurrence\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$starts_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\SubscriptionResource\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/SubscriptionResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\UserResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\UserResource\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\UserResource\:\:\$email_verified_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\UserResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\UserResource\:\:\$is_active\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\UserResource\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\UserResource\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Builder\:\:active\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: app/Models/Subscription.php
+
+		-
+			message: '#^Called ''env'' outside of the config directory which returns null when the config is cached, use ''config''\.$#'
+			identifier: larastan.noEnvCallsOutsideOfConfig
+			count: 4
+			path: app/Providers/AppServiceProvider.php
+
+		-
+			message: '#^Cannot call method toDateString\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Services/Currency/CurrencyConversionService.php
+
+		-
+			message: '#^Cannot call method toDateString\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Services/Subscription/SubscriptionBillingDateService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: database/factories/SubscriptionFactory.php

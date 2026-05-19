@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
-
 it('returns complete health check response', function (): void {
     $response = $this->getJson('/health');
 

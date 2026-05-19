@@ -21,14 +21,13 @@ class AuditRequest
 
     public function __construct(
         private readonly AuditLogger $auditLogger,
-    ) {
-    }
+    ) {}
 
     public function handle(Request $request, Closure $next): Response
     {
         $response = $next($request);
 
-        if (!$this->shouldAudit($request, $response)) {
+        if (! $this->shouldAudit($request, $response)) {
             return $response;
         }
 
@@ -53,11 +52,11 @@ class AuditRequest
 
     private function shouldAudit(Request $request, Response $response): bool
     {
-        if (!$request->is('api/*')) {
+        if (! $request->is('api/*')) {
             return false;
         }
 
-        if (!in_array($request->method(), ['POST', 'PUT', 'PATCH', 'DELETE'], true)) {
+        if (! in_array($request->method(), ['POST', 'PUT', 'PATCH', 'DELETE'], true)) {
             return false;
         }
 

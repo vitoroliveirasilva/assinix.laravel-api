@@ -13,7 +13,7 @@ class EnsureUserIsActive
     {
         $user = $request->user();
 
-        if ($user !== null && !$user->isActive()) {
+        if ($user !== null && ! $user->isActive()) {
             return ApiResponse::error(
                 message: 'Sua conta está inativa.',
                 status: 403,

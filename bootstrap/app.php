@@ -25,8 +25,8 @@ use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__ . '/../routes/web.php',
-        commands: __DIR__ . '/../routes/console.php',
+        web: __DIR__.'/../routes/web.php',
+        commands: __DIR__.'/../routes/console.php',
         health: '/up',
         then: function (): void {
             Route::middleware('api')
@@ -64,7 +64,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (ValidationException $exception, Request $request) use ($shouldReturnJson) {
-            if (!$shouldReturnJson($request)) {
+            if (! $shouldReturnJson($request)) {
                 return null;
             }
 
@@ -76,7 +76,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (AuthenticationException $exception, Request $request) use ($shouldReturnJson) {
-            if (!$shouldReturnJson($request)) {
+            if (! $shouldReturnJson($request)) {
                 return null;
             }
 
@@ -87,7 +87,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (AuthorizationException $exception, Request $request) use ($shouldReturnJson) {
-            if (!$shouldReturnJson($request)) {
+            if (! $shouldReturnJson($request)) {
                 return null;
             }
 
@@ -98,7 +98,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (AccessDeniedHttpException $exception, Request $request) use ($shouldReturnJson) {
-            if (!$shouldReturnJson($request)) {
+            if (! $shouldReturnJson($request)) {
                 return null;
             }
 
@@ -109,7 +109,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (TooManyRequestsHttpException $exception, Request $request) use ($shouldReturnJson) {
-            if (!$shouldReturnJson($request)) {
+            if (! $shouldReturnJson($request)) {
                 return null;
             }
 
@@ -126,7 +126,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (NotFoundHttpException $exception, Request $request) use ($shouldReturnJson) {
-            if (!$shouldReturnJson($request)) {
+            if (! $shouldReturnJson($request)) {
                 return null;
             }
 
@@ -137,7 +137,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (MethodNotAllowedHttpException $exception, Request $request) use ($shouldReturnJson) {
-            if (!$shouldReturnJson($request)) {
+            if (! $shouldReturnJson($request)) {
                 return null;
             }
 
@@ -148,7 +148,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->render(function (Throwable $exception, Request $request) use ($shouldReturnJson) {
-            if (!$shouldReturnJson($request)) {
+            if (! $shouldReturnJson($request)) {
                 return null;
             }
 
@@ -165,7 +165,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         $exceptions->respond(function (Response $response, Throwable $exception, Request $request) use ($shouldReturnJson) {
-            if (!$shouldReturnJson($request)) {
+            if (! $shouldReturnJson($request)) {
                 return $response;
             }
 

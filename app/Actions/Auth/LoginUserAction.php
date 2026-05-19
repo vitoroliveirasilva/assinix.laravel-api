@@ -15,9 +15,9 @@ class LoginUserAction
             ->first();
 
         if (
-            !$user
-            || !Hash::check($data['password'], $user->password)
-            || !$user->isActive()
+            ! $user
+            || ! Hash::check($data['password'], $user->password)
+            || ! $user->isActive()
         ) {
             throw ValidationException::withMessages([
                 'email' => ['As credenciais informadas são inválidas.'],

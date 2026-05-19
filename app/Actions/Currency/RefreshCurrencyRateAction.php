@@ -10,8 +10,7 @@ class RefreshCurrencyRateAction
 {
     public function __construct(
         private readonly CurrencyConversionService $conversionService,
-    ) {
-    }
+    ) {}
 
     public function execute(User $user, array $data): array
     {

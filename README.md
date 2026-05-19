@@ -21,9 +21,9 @@ Este projeto foi desenvolvido como portfólio back-end com foco em arquitetura l
 - Pest
 - Scramble OpenAPI
 - AwesomeAPI
-- GitHub Actions, no próximo bloco
-- Laravel Pint, no próximo bloco
-- PHPStan/Larastan, no próximo bloco
+- GitHub Actions
+- Laravel Pint
+- PHPStan/Larastan
 
 ## Funcionalidades
 
@@ -176,6 +176,59 @@ docker compose exec app php artisan test --filter=DashboardTest
 docker compose exec app php artisan test --filter=CurrencyRateTest
 docker compose exec app php artisan test --filter=AuditLogTest
 ```
+
+## Qualidade de código
+
+Rodar todos os testes:
+
+```bash
+docker compose exec app composer test
+```
+
+Validar estilo com Laravel Pint:
+
+```bash
+docker compose exec app composer pint:test
+```
+
+Corrigir estilo automaticamente:
+
+```bash
+docker compose exec app composer pint
+```
+
+Rodar análise estática com Larastan:
+
+```bash
+docker compose exec app composer analyse
+```
+
+Rodar a esteira local completa:
+
+```bash
+docker compose exec app composer quality
+```
+
+Exportar OpenAPI:
+
+```bash
+docker compose exec app composer openapi:export
+```
+
+## CI/CD
+
+O projeto possui uma esteira de qualidade planejada para GitHub Actions com:
+
+- instalação de dependências via Composer;
+- preparação do Laravel;
+- migrations em PostgreSQL;
+- execução dos testes;
+- validação de estilo com Laravel Pint;
+- análise estática com Larastan/PHPStan;
+- exportação da documentação OpenAPI;
+- validação de build Docker.
+
+O objetivo é garantir que o projeto continue saudável a cada push ou pull request.
 
 ## Documentação OpenAPI
 

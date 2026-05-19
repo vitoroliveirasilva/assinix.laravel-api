@@ -12,8 +12,7 @@ class BuildDashboardYearlyAction
 {
     public function __construct(
         private readonly SubscriptionFinancialCalculator $calculator,
-    ) {
-    }
+    ) {}
 
     public function execute(User $user, int $years = 3): array
     {
@@ -29,15 +28,15 @@ class BuildDashboardYearlyAction
                 $year = $startYear + $offset;
 
                 $yearlyTotal = $subscriptions->sum(
-                    fn(Subscription $subscription): float => $this->calculator->yearlyEstimated($subscription)
+                    fn (Subscription $subscription): float => $this->calculator->yearlyEstimated($subscription)
                 );
 
                 $dueInYear = $subscriptions
-                    ->filter(fn(Subscription $subscription): bool => (int) $subscription->next_billing_at->format('Y') === $year)
+                    ->filter(fn (Subscription $subscription): bool => (int) $subscription->next_billing_at->format('Y') === $year)
                     ->values();
 
                 $dueTotal = $dueInYear->sum(
-                    fn(Subscription $subscription): float => $this->calculator->amountInBrl($subscription)
+                    fn (Subscription $subscription): float => $this->calculator->amountInBrl($subscription)
                 );
 
                 return [

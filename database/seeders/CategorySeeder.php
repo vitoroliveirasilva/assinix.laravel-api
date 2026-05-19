@@ -11,7 +11,7 @@ class CategorySeeder extends Seeder
     {
         $user = User::query()->first();
 
-        if (!$user) {
+        if (! $user) {
             return;
         }
 

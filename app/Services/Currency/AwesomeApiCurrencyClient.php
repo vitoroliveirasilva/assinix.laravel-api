@@ -25,19 +25,19 @@ class AwesomeApiCurrencyClient
             )
             ->get("/json/last/{$pair}");
 
-        if (!$response->successful()) {
+        if (! $response->successful()) {
             throw new RuntimeException("AwesomeAPI request failed for pair {$pair}.");
         }
 
         $payload = $response->json();
 
-        if (!is_array($payload) || !isset($payload[$key]) || !is_array($payload[$key])) {
+        if (! is_array($payload) || ! isset($payload[$key]) || ! is_array($payload[$key])) {
             throw new RuntimeException("AwesomeAPI returned an invalid payload for pair {$pair}.");
         }
 
         $quote = $payload[$key];
 
-        if (!isset($quote['bid']) || !is_numeric($quote['bid'])) {
+        if (! isset($quote['bid']) || ! is_numeric($quote['bid'])) {
             throw new RuntimeException("AwesomeAPI returned an invalid bid for pair {$pair}.");
         }
 

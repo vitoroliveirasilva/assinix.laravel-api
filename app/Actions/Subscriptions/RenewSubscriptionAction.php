@@ -16,8 +16,7 @@ class RenewSubscriptionAction
     public function __construct(
         private readonly SubscriptionBillingDateService $billingDateService,
         private readonly SubscriptionHistoryRecorder $historyRecorder,
-    ) {
-    }
+    ) {}
 
     public function execute(Subscription $subscription, User $user, array $data = []): Subscription
     {

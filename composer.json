@@ -2,8 +2,21 @@
     "$schema": "https://getcomposer.org/schema.json",
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "API REST em PHP/Laravel para gerenciamento de assinaturas, vencimentos e gastos recorrentes.",
+    "keywords": [
+        "laravel",
+        "api",
+        "rest-api",
+        "subscriptions",
+        "recurring-expenses",
+        "postgresql",
+        "redis",
+        "docker",
+        "sanctum",
+        "pest",
+        "openapi",
+        "portfolio"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.3",
@@ -14,9 +27,10 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+        "larastan/larastan": "^3.0",
         "laravel/pail": "^1.2.5",
         "laravel/pao": "^1.0.6",
-        "laravel/pint": "^1.27",
+        "laravel/pint": "^1.29",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.6",
         "pestphp/pest": "^4.0",
@@ -69,6 +83,16 @@
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ],
+        "test:parallel": "php artisan test --parallel",
+        "pint": "pint",
+        "pint:test": "pint --test",
+        "analyse": "phpstan analyse --memory-limit=1G",
+        "openapi:export": "php artisan scramble:export --path=public/openapi.json",
+        "quality": [
+            "@pint:test",
+            "@analyse",
+            "@test"
         ]
     },
     "extra": {

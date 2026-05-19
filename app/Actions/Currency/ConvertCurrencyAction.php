@@ -9,8 +9,7 @@ class ConvertCurrencyAction
 {
     public function __construct(
         private readonly CurrencyConversionService $conversionService,
-    ) {
-    }
+    ) {}
 
     public function execute(array $data): array
     {

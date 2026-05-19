@@ -24,14 +24,14 @@ class UserFactory extends Factory
 
     public function inactive(): static
     {
-        return $this->state(fn(array $attributes): array => [
+        return $this->state(fn (array $attributes): array => [
             'is_active' => false,
         ]);
     }
 
     public function unverified(): static
     {
-        return $this->state(fn(array $attributes): array => [
+        return $this->state(fn (array $attributes): array => [
             'email_verified_at' => null,
         ]);
     }

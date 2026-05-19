@@ -28,7 +28,7 @@ enum PaymentMethodType: string
     public static function values(): array
     {
         return array_map(
-            callback: static fn(self $type): string => $type->value,
+            callback: static fn (self $type): string => $type->value,
             array: self::cases(),
         );
     }

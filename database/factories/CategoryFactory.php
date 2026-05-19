@@ -20,7 +20,7 @@ class CategoryFactory extends Factory
 
     public function inactive(): static
     {
-        return $this->state(fn(array $attributes): array => [
+        return $this->state(fn (array $attributes): array => [
             'is_active' => false,
         ]);
     }

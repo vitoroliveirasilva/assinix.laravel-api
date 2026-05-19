@@ -15,11 +15,11 @@ class ListCurrencyRatesAction
         return CurrencyRate::query()
             ->when(
                 isset($filters['base_currency']),
-                fn($query) => $query->where('base_currency', CurrencyCode::from($filters['base_currency'])),
+                fn ($query) => $query->where('base_currency', CurrencyCode::from($filters['base_currency'])),
             )
             ->when(
                 isset($filters['target_currency']),
-                fn($query) => $query->where('target_currency', CurrencyCode::from($filters['target_currency'])),
+                fn ($query) => $query->where('target_currency', CurrencyCode::from($filters['target_currency'])),
             )
             ->latestFirst()
             ->paginate(min(max($perPage, 1), 50))
